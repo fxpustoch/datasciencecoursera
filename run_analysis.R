@@ -7,8 +7,8 @@ urlAddress <- "http://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI
 dir <- "UCI HAR Dataset"
 
 # download the file then unzip the file
-download.file(urlAddress,fileName, mode = "wb") 
-unzip(fileName, files = NULL, exdir=".")
+#download.file(urlAddress,fileName, mode = "wb") 
+#unzip(fileName, files = NULL, exdir=".")
 
 ## Load all the data from the UCI folder
 X_test <- read.table("UCI HAR Dataset/test/X_test.txt") # 2947 x 561
@@ -57,7 +57,7 @@ for (i in 1:6)
 #Appropriately labels the data set with descriptive variable names
 
 # check the list of names
-print(names(filteredData))
+#print(names(filteredData))
 # we can see some abbreviations : Acc, Gyro
 # change the prefix
 names(filteredData) <-gsub("^t", "Time", names(filteredData))
@@ -69,11 +69,11 @@ names(filteredData) <-gsub("BodyBody", "Body", names(filteredData))
 names(filteredData) <-gsub("Mag", "Magnitude", names(filteredData))
 
 # check the list of names
-print(names(filteredData))
+#print(names(filteredData))
 
 # From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 tidyData <- ddply(filteredData, c("Subject","Activity"), numcolwise(mean))
 
-print(tidyData)
+#print(tidyData)
 
 write.table(tidyData,file="tidyData.txt",row.name=FALSE)
